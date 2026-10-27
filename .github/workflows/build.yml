@@ -1,0 +1,64 @@
+name: build
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Show toolchain
+        shell: powershell
+        run: |
+          $PSVersionTable | Out-String
+          $csc = "$env:WINDIR\Microsoft.NET\Framework64\v4.0.30319\csc.exe"
+          if (-not (Test-Path $csc)) { throw "csc.exe not found: $csc" }
+          "csc: $csc"
+
+      - name: Build native app
+        shell: powershell
+        run: ./native/build.ps1
+
+      - name: Verify output
+        shell: powershell
+        run: |
+          Get-ChildItem dist | Format-Table Name, Length
+          if (-not (Test-Path dist/SteamTune.exe)) { throw "SteamTune.exe was not produced" }
+          if (-not (Test-Path dist/steam_api64.dll)) { throw "steam_api64.dll was not produced" }
+          if (Test-Path dist/steam_appid.txt) { throw "steam_appid.txt must not be shipped" }
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: SteamTune-win-x64
+          path: |
+            dist/SteamTune.exe
+            dist/steam_api64.dll
+            dist/richpresence_localization.json
+          if-no-files-found: error
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: SteamTune-win-x64
+          path: SteamTune
+      - name: Zip artifacts
+        run: |
+          cd SteamTune
+          zip -r ../SteamTune-win-x64.zip .
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: SteamTune-win-x64.zip
+          generate_release_notes: true

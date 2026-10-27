@@ -1,0 +1,17 @@
+// SteamPipe 上传脚本 —— 把 <APPID> 换成 Steamworks 后台给你的 AppID
+// 用法：steamcmd +login <你的账号> +run_app_build ..\steam\app_build.vdf +quit
+"appbuild"
+{
+	"appid" "<APPID>"
+	"desc" "SteamTune build"
+
+	// native\build.ps1 的产物目录（SteamTune.exe + steam_api64.dll + 本地化 json）
+	"contentroot" "..\\dist\\"
+	"buildoutput" "..\\steampipe_output\\"
+	"setlive" ""
+
+	"depots"
+	{
+		"<DEPOTID>" "..\\steam\\depot_build.vdf"
+	}
+}

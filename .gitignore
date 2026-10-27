@@ -1,0 +1,11 @@
+dist/
+build/gui-*.png
+steam_appid.txt
+config.json
+app.log
+*.log
+*.user
+steampipe_output/
+.vs/
+.DS_Store
+Thumbs.db

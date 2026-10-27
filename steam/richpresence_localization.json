@@ -1,0 +1,31 @@
+{
+  "lang": {
+    "english": {
+      "tokens": {
+        "#Status_Default": "%status%",
+        "#Status_Listening": "Listening to %song%",
+        "#Status_ListeningArtist": "Listening to %song% — %artist%",
+        "#Status_ListeningWithPlayer": "Listening to %song% — %artist% · via %player%",
+        "#Status_ListeningWithPlayerNoArtist": "Listening to %song% · via %player%"
+      }
+    },
+    "schinese": {
+      "tokens": {
+        "#Status_Default": "%status%",
+        "#Status_Listening": "正在听 %song%",
+        "#Status_ListeningArtist": "正在听 %song% — %artist%",
+        "#Status_ListeningWithPlayer": "正在听 %song% — %artist% · 来自 %player%",
+        "#Status_ListeningWithPlayerNoArtist": "正在听 %song% · 来自 %player%"
+      }
+    },
+    "tchinese": {
+      "tokens": {
+        "#Status_Default": "%status%",
+        "#Status_Listening": "正在聽 %song%",
+        "#Status_ListeningArtist": "正在聽 %song% — %artist%",
+        "#Status_ListeningWithPlayer": "正在聽 %song% — %artist% · 來自 %player%",
+        "#Status_ListeningWithPlayerNoArtist": "正在聽 %song% · 來自 %player%"
+      }
+    }
+  }
+}

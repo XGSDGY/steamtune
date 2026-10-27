@@ -1,0 +1,24 @@
+// Depot 映射 —— 只上传 dist 里的运行时文件
+// 注意：steam_appid.txt 绝对不能进 depot（Valve 审核也会拦）
+"DepotBuildConfig"
+{
+	"DepotID" "<DEPOTID>"
+
+	"ContentRoot" "..\\dist\\"
+	"FileMapping"
+	{
+		"LocalPath" "*"
+		"Recursive" "1"
+
+		// 排除开发残留与调试文件
+		"Exclude" "steam_appid.txt"
+		"Exclude" "*.ps1"
+		"Exclude" "*.pdb"
+		"Exclude" "*.log"
+	}
+	"FileExclusion" "steam_appid.txt"
+	"FileExclusion" "*.ps1"
+
+	// 由 Steam 客户端负责启动，不需要额外参数
+	"DepotFlags" "0"
+}
