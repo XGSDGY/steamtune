@@ -25,13 +25,15 @@ Native Windows desktop app · single exe, ~140 KB · no Electron, no Node, no We
 
 ## ✨ What it is
 
-SteamTune reads the Windows Global System Media Transport Controls (SMTC) session, figures out **which player is playing and what track it is**, then publishes that through the official Steamworks API `ISteamFriends::SetRichPresence`. Your friends see more than "In-Game: SteamTune":
+SteamTune reads the Windows Global System Media Transport Controls (SMTC) session, figures out **which player is playing and what track it is**, then publishes that through the official Steamworks API. Your friends see more than "In-Game: SteamTune":
 
 ```text
 YourName
 SteamTune
-Listening to Payphone — Maroon 5 · via 网易云音乐
+Listening to <track info>
 ```
+
+> The third line is built from whatever is playing and from the chosen style (song / song — artist / song — artist · via player); switch it in the app's display settings. The artist part is dropped when the track has none.
 
 - 🎧 **Player detection**: NetEase Cloud Music, QQ Music, Kugou, Kuwo, Spotify, foobar2000, AIMP, MusicBee, Apple Music, VLC, browser playback, and more
 - 🪟 **Native UI**: hand-drawn C# / WinForms — no Electron, no WebView, no Node runtime; tray icon, animated equalizer, dark cards

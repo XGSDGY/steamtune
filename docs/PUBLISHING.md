@@ -47,10 +47,10 @@ powershell -ExecutionPolicy Bypass -File native\build.ps1   # 会把它一起复
 
 | `steam_display` | 占位符 | 中文效果 |
 | --- | --- | --- |
-| `#Status_Listening` | `%song%` | 正在听 一直很安静 |
-| `#Status_ListeningArtist` | `%song%` `%artist%` | 正在听 一直很安静 — 那只猫 |
-| `#Status_ListeningWithPlayer` | `%song%` `%artist%` `%player%` | 正在听 一直很安静 — 那只猫 · 来自 网易云音乐 |
-| `#Status_ListeningWithPlayerNoArtist` | `%song%` `%player%` | 正在听 一直很安静 · 来自 网易云音乐 |
+| `#Status_Listening` | `%song%` | 正在听 <歌名> |
+| `#Status_ListeningArtist` | `%song%` `%artist%` | 正在听 <歌名> — <歌手> |
+| `#Status_ListeningWithPlayer` | `%song%` `%artist%` `%player%` | 正在听 <歌名> — <歌手> · 来自 <播放器> |
+| `#Status_ListeningWithPlayerNoArtist` | `%song%` `%player%` | 正在听 <歌名> · 来自 <播放器> |
 | `#Status_Default` | `%status%` | 兜底/占位 |
 
 代码侧对应 `native/Presence.cs` 的 `Build()`：没有歌手时自动退到不带 `%artist%` 的模板，避免出现「正在听 X — 」这种悬空破折号。**改模板文字不需要重新上传构建**，改完 Publish 即可。

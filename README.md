@@ -24,13 +24,15 @@
 
 ## ✨ 它是什么
 
-SteamTune 读取 Windows 的系统媒体会话（SMTC），识别你**正在用哪个播放器、在听哪首歌**，再通过官方 Steamworks 接口 `ISteamFriends::SetRichPresence` 把状态发布到 Steam。好友打开好友列表，看到的不只是「正在玩 SteamTune」，还有：
+SteamTune 读取 Windows 的系统媒体会话（SMTC），识别你**正在用哪个播放器、在听哪首歌**，再通过官方 Steamworks 接口把状态发布到 Steam。好友打开好友列表，看到的不只是「正在玩 SteamTune」，还有：
 
 ```text
 你的昵称
 SteamTune
-正在听 一直很安静 — 那只猫 · 来自 网易云音乐
+正在听 <歌曲信息>
 ```
+
+> 第三行的实际内容由当前播放的曲目和所选模板决定（歌名 / 歌名—歌手 / 歌名—歌手·来自播放器），可在界面「显示样式」里切换；没有歌手信息时会自动省略。
 
 - 🎧 **播放器识别**：网易云、QQ 音乐、酷狗、酷我、Spotify、foobar2000、AIMP、MusicBee、Apple Music、VLC、浏览器网页播放……
 - 🪟 **原生界面**：C# / WinForms 自绘，无 Electron、无 WebView、无 Node 运行时，自带托盘、频谱动画、暗色卡片
